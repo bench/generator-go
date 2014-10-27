@@ -1,0 +1,12 @@
+{
+  "name": "generator-go",
+  "version": "0.1.0",
+  "description": "Generate a simple golang project structure",
+  "keywords": [
+    "yeoman-generator",
+    "golang"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^0.17.7"
+  }
+}
