@@ -51,21 +51,21 @@ module.exports = yeoman.Base.extend({
   buildTreeFoldersAndCopyStaticFiles: function() {
     console.log('Generating tree folders');
     var pkgDir = 'pkg/'
-    var srcDir = 'src/'+ reverseUrl(this.repoUrl) + "/" + this.baseName
+    var srcDir = 'src/'+ this.repoUrl + "/" + this.baseName
     var binDir = 'bin/'
     this.mkdir(pkgDir);
     this.mkdir(srcDir);
     this.mkdir(binDir);
 
     this.copy("_gitignore", ".gitignore");
-    this.copy("main.go", srcDir + "/main.go")
+    this.copy("_main.go", srcDir + "/main.go")
+    this.copy("_hello.go", srcDir + "/hello.go")
+    this.copy("_hello_test.go", srcDir + "/hello_test.go")
 
 
   }
 });
 
 function reverseUrl(url) {
-
   return url.split(".").reverse().join(".");
-
 }
