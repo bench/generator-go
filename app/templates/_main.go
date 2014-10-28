@@ -2,9 +2,9 @@ package main
 
 import(
 "fmt"
-"hello"
+"<%=myrepoUrl%>/<%=myappName%>/hello"
 ) 
 
 func main() {
-	fmt.Printf("Hello, world.\n")
+	fmt.Println(hello.BuildHello())
 }

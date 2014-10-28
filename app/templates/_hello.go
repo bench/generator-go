@@ -1,9 +1,9 @@
 package hello
 
-func BuildHello() {
+func BuildHello() string {
      return "Hello, world."
 }
 
-func BuildHi() {
+func BuildHi() string {
      return "Hi, world."
 }

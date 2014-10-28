@@ -5,7 +5,7 @@ var yeoman = require('yeoman-generator');
 
 module.exports = yeoman.Base.extend({
 
-  getAppName: function() {
+  getmyappName: function() {
 
     console.log('\n' +
       '+-----------------------------------------+\n' +
@@ -18,13 +18,13 @@ module.exports = yeoman.Base.extend({
 
     var prompts = [{
       type: 'input',
-      name: 'baseName',
+      name: 'myappName',
       message: 'What is the name of your application?',
       default: 'myapp'
     }, ];
 
     this.prompt(prompts, function(props) {
-      this.baseName = props.baseName;
+      this.myappName = props.myappName;
       cb();
     }.bind(this));
 
@@ -36,31 +36,40 @@ module.exports = yeoman.Base.extend({
 
     var prompts = [{
       type: 'input',
-      name: 'repoUrl',
+      name: 'myrepoUrl',
       message: 'What is the URL repository of your application?',
       default: 'github.com'
     }, ];
 
     this.prompt(prompts, function(props) {
-      this.repoUrl = props.repoUrl;
+      this.myrepoUrl = props.myrepoUrl;
       cb();
     }.bind(this));
 
   },
 
-  buildTreeFoldersAndCopyStaticFiles: function() {
+  buildTreeFolderAndCopyFiles: function() {
     console.log('Generating tree folders');
     var pkgDir = 'pkg/'
-    var srcDir = 'src/'+ this.repoUrl + "/" + this.baseName
+    var srcDir = 'src/'+ this.myrepoUrl + "/" + this.myappName
     var binDir = 'bin/'
+
     this.mkdir(pkgDir);
     this.mkdir(srcDir);
     this.mkdir(binDir);
 
     this.copy("_gitignore", ".gitignore");
-    this.copy("_main.go", srcDir + "/main.go")
-    this.copy("_hello.go", srcDir + "/hello.go")
-    this.copy("_hello_test.go", srcDir + "/hello_test.go")
+    this.copy("_hello.go", srcDir + "/hello/hello.go")
+    this.copy("_hello_test.go", srcDir + "/hello/hello_test.go")
+
+    var tmplContext = { 
+        myappName : this.myappName,
+        myrepoUrl: this.myrepoUrl
+    };
+
+    this.template("_README.md", "README.md");
+    this.template("_main.go", srcDir + "/main.go", tmplContext)
+    this.template("_Makefile", "Makefile", tmplContext)
 
 
   }

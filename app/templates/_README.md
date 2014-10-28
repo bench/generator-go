@@ -1,3 +1,3 @@
-#<%= _.camelize(baseName) %>
+# <%= _.capitalize(myappName) %>
 
-TO COMPLETE
+Once upon a time, blablabla...
