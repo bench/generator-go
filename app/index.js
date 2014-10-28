@@ -1,47 +1,71 @@
 'use strict';
 
-var generators = require('yeoman-generator');
+var yeoman = require('yeoman-generator');
+//var terminalMenu = require('terminal-menu');
 
-module.exports = generators.Base.extend({
+module.exports = yeoman.Base.extend({
 
-method1: function () {
+  getAppName: function() {
 
-console.log('\n' +
-    '+-------------------------------------------------------+\n' +
-    '| S i m p l e | g o | p r o j e c t | g e n e r a t o r |\n' +
-    '+-------------------------------------------------------+\n' +
-    '\n');
-
-  var cb = this.async();
+    console.log('\n' +
+      '+-----------------------------------------+\n' +
+      '| G o | p r o j e c t | g e n e r a t o r |\n' +
+      '+-----------------------------------------+\n' +
+      '\n');
 
 
-  var prompts = [{
-    type: 'input',
-    name: 'baseName',
-    message: 'What is the name of your application?',
-    default: 'myapp'
-  }];
+    var cb = this.async();
 
-  this.prompt(prompts, function (props) {
-    this.baseName = props.baseName;
+    var prompts = [{
+      type: 'input',
+      name: 'baseName',
+      message: 'What is the name of your application?',
+      default: 'myapp'
+    }, ];
 
-    cb();
-  }.bind(this));
+    this.prompt(prompts, function(props) {
+      this.baseName = props.baseName;
+      cb();
+    }.bind(this));
 
-},
+  },
 
-	method2: function () {
-	    console.log('Generating tree folders');
-        var pkgDir = 'pkg/'
-        var srcDir = 'src/'
-        var binDir = 'bin/'
-	    this.mkdir(pkgDir);
-	    this.mkdir(srcDir);
-	    this.mkdir(binDir);
+  getRepoName: function() {
 
-        this.copy("_gitignore", ".gitignore");
-        
+    var cb = this.async();
 
-	}
-    });
+    var prompts = [{
+      type: 'input',
+      name: 'repoUrl',
+      message: 'What is the URL repository of your application?',
+      default: 'github.com'
+    }, ];
 
+    this.prompt(prompts, function(props) {
+      this.repoUrl = props.repoUrl;
+      cb();
+    }.bind(this));
+
+  },
+
+  buildTreeFoldersAndCopyStaticFiles: function() {
+    console.log('Generating tree folders');
+    var pkgDir = 'pkg/'
+    var srcDir = 'src/'+ reverseUrl(this.repoUrl) + "/" + this.baseName
+    var binDir = 'bin/'
+    this.mkdir(pkgDir);
+    this.mkdir(srcDir);
+    this.mkdir(binDir);
+
+    this.copy("_gitignore", ".gitignore");
+    this.copy("main.go", srcDir + "/main.go")
+
+
+  }
+});
+
+function reverseUrl(url) {
+
+  return url.split(".").reverse().join(".");
+
+}

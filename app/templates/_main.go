@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import(
+"fmt"
+"hello"
+) 
 
 func main() {
 	fmt.Printf("Hello, world.\n")
