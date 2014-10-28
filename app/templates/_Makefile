@@ -26,4 +26,4 @@ install: clean
 
 # Run your application
 run : clean install
-	bin/$(BINARY_NAME)
+	@./bin/$(BINARY_NAME)
