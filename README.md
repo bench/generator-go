@@ -1,25 +1,20 @@
-generator-go
-============
+# The Go generator
 
+A [Yeoman](http://yeoman.io) generator for [Go](http://golang.org/).
 
-# Go generator
-
-See the [Golang documentation](https://golang.org/doc/) for more info.
-
+See the [Golang documentation](https://golang.org/doc/) for more information.
 
 ## Why Go generator ?
 
 The Go programming language is an open source project to make programmers more productive.
-Golang team defines guidelines to organize your code and the structure of your application when you start a golang project.
+
+Golang team defines guidelines to organize your code and structure your application.
+
 The generator builds a standard directory hierarchy for your new golang project.
 
 ## Usage
 
 Install it globally `npm install -g generator-go`.
 
-Running `yo go` will generate a standard directory hierarchy for your golang project plus a makefile et .gitignore.
+Running `yo go` will generate a standard golang project plus a makefile and a .gitignore file.
 
-
-## Options
-
-Not yet implemented.
