@@ -67,10 +67,9 @@ module.exports = yeoman.Base.extend({
         myrepoUrl: this.myrepoUrl
     };
 
-    this.template("_README.md", "README.md");
     this.template("_main.go", srcDir + "/main.go", tmplContext)
+    this.template("_README.md", "README.md");
     this.template("_Makefile", "Makefile", tmplContext)
-
 
   }
 });

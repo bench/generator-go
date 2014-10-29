@@ -3,30 +3,40 @@ TARG=sgs-enabler
 PACKAGE="<%=myrepoUrl%>/<%=myappName%>"
 BINARY_NAME="<%=myappName%>"
 
-print_success = echo -e "\e[1;32mDONE $<\e[0m"
-print_warning = echo -e "\e[1;33mWARNING) $<\e[0m"
-print_error = echo -e "\e[1;31mERROR $<\e[0m"
+print_success = echo -e "\e[1;32m$(1) $<\e[0m"
+print_warning = echo -e "\e[1;33m$(1) $<\e[0m"
+print_error = echo -e "\e[1;31m$(1) $<\e[0m"
 
+export GOPATH=$(shell pwd)
 
 # Default target : Do nothing
-null:
-    $(call print_success,tata)
-    @echo "You must specify a target with this makefile!"
+default:
+	@echo "You must specify a target with this makefile"
+	@echo "Usage : "
+	@echo "make clean        Remove binary files"
+	@echo "make install      Compile sources and build binaries"
+	@echo "make test         Run all tests of your application"
+	@echo "make run          Build application and run it !"
 
 # Clean .o files and binary
 clean:
-    @echo "--> cleaning..."
-    @go clean || (echo "Unable to clean project" && exit 1)
-    @rm -rf bin/$(BINARY_NAME) 2> /dev/null
-    @$(call print_success)
+	@echo "--> cleaning..."
+	@go clean || (echo "Unable to clean project" && exit 1)
+	@rm -rf bin/$(BINARY_NAME) 2> /dev/null
+	@echo "Clean OK"
 
 # Compile sources and build binary
 install: clean
-    @echo "--> installing..."
-    @go install $(PACKAGE) || ($(call print_error,Compilation error) && exit 1)
-    @$(call print_success)
-
+	@echo "--> installing..."
+	@go install $(PACKAGE) || ($(call print_error,Compilation error) && exit 1)
+	@echo "Install OK"
 
 # Run your application
 run: clean install
-    @./bin/$(BINARY_NAME)
+	@echo "--> running application..."
+	@./bin/$(BINARY_NAME)
+
+# Test your application
+test:
+	@echo "--> testing..."
+	@go test -v $(PACKAGE)/...
