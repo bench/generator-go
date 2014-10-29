@@ -3,27 +3,30 @@ TARG=sgs-enabler
 PACKAGE="<%=myrepoUrl%>/<%=myappName%>"
 BINARY_NAME="<%=myappName%>"
 
-# Default target : Build and run executable
-default: run
-	@echo "Done. Executable is: $@"
+print_success = echo -e "\e[1;32mDONE $<\e[0m"
+print_warning = echo -e "\e[1;33mWARNING) $<\e[0m"
+print_error = echo -e "\e[1;31mERROR $<\e[0m"
+
+
+# Default target : Do nothing
+null:
+    $(call print_success,tata)
+    @echo "You must specify a target with this makefile!"
 
 # Clean .o files and binary
 clean:
-	@echo "--> cleaning..."
-	@go clean
-	@rm -rf bin/$(BINARY_NAME) 2> /dev/null
+    @echo "--> cleaning..."
+    @go clean || (echo "Unable to clean project" && exit 1)
+    @rm -rf bin/$(BINARY_NAME) 2> /dev/null
+    @$(call print_success)
 
 # Compile sources and build binary
 install: clean
-	@echo "--> installing..."
-    @if [ $$(go install $(PACKAGE)) ] \
-        then \
-            true; \
-        else \	
-        	@echo >&2 "Compilation error occured, unable to install your application";
-            false; \
-        fi
+    @echo "--> installing..."
+    @go install $(PACKAGE) || ($(call print_error,Compilation error) && exit 1)
+    @$(call print_success)
+
 
 # Run your application
-run : clean install
-	@./bin/$(BINARY_NAME)
+run: clean install
+    @./bin/$(BINARY_NAME)
