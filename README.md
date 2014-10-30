@@ -28,6 +28,8 @@ Build your project and run it with `make run`.
 
 ![Alt text](/../pictures/pictures/go-generator2.png?raw=true "yo go make run")
 
+Start coding !
+
 ## Contributing
 
 If you would like to submit pull requests, please feel free to apply.
