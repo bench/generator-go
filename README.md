@@ -36,4 +36,4 @@ If you would like to submit pull requests, please feel free to apply.
 
 * Go ($GOROOT must be set)
 * Make
-* Yo[https://github.com/yeoman/yo](http://yeoman.io) (the scaffolding tool from Yeoman)
+* [Yo](https://github.com/yeoman/yo) (the scaffolding tool from Yeoman)
