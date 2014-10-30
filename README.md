@@ -22,8 +22,18 @@ Run `yo go`.
 
 It will generate a standard golang project plus a makefile and a .gitignore file.
 
-![Alt text](/../pictures/pictures/go-generator1.png?raw=true "yo go tree result"){ float: right; }
+![Alt text](/../pictures/pictures/go-generator1.png?raw=true "yo go tree result")
 
 Build your project and run it with `make run`.
 
 ![Alt text](/../pictures/pictures/go-generator2.png?raw=true "yo go make run")
+
+## Contributing
+
+If you would like to submit pull requests, please feel free to apply.
+
+## Dependencies
+
+* Go ($GOROOT must be set)
+* Make
+* Yo[https://github.com/yeoman/yo](http://yeoman.io) (the scaffolding tool from Yeoman)
