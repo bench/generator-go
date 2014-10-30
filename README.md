@@ -16,5 +16,14 @@ The generator builds a standard directory hierarchy for your new golang project.
 
 Install it globally `npm install -g generator-go`.
 
-Running `yo go` will generate a standard golang project plus a makefile and a .gitignore file.
+Run `yo go`. 
 
+![Alt text](/../pictures/pictures/go-generator.png?raw=true "yo go command")
+
+It will generate a standard golang project plus a makefile and a .gitignore file.
+
+![Alt text](/../pictures/pictures/go-generator1.png?raw=true "yo go tree result")
+
+Build your project and run it with `make run`.
+
+![Alt text](/../pictures/pictures/go-generator2.png?raw=true "yo go make run")
