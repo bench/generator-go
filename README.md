@@ -22,7 +22,7 @@ Run `yo go`.
 
 It will generate a standard golang project plus a makefile and a .gitignore file.
 
-![Alt text](/../pictures/pictures/go-generator1.png?raw=true "yo go tree result")
+![Alt text](/../pictures/pictures/go-generator1.png?raw=true "yo go tree result"){ float: right; }
 
 Build your project and run it with `make run`.
 
