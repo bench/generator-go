@@ -19,7 +19,7 @@ Install Yeoman:
     npm install -g yo
 
 
-Install generator globally 
+Install Go generator
 
     npm install -g generator-go
 
