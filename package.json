@@ -1,7 +1,7 @@
 {
   "name": "generator-go",
-  "version": "0.1.0",
-  "description": "Yeoman generator to scaffold a simple golang app",
+  "version": "0.1.1",
+  "description": "Yeoman generator to scaffold functionnal golang app",
   "keywords": ["yeoman-generator"],
   "dependencies": {
     "yeoman-generator": "^0.17.7"

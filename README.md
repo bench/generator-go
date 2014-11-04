@@ -14,9 +14,18 @@ The generator builds a standard directory hierarchy for your new golang project.
 
 ## Usage
 
-Install it globally `npm install -g generator-go`.
+Install Yeoman:
 
-Run `yo go`. 
+    npm install -g yo
+
+
+Install generator globally 
+
+    npm install -g generator-go
+
+Run generator
+
+     yo go 
 
 ![Alt text](/../pictures/pictures/go-generator.png?raw=true "yo go command")
 
