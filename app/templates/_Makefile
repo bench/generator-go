@@ -1,5 +1,4 @@
 # VARIABLES
-TARG=sgs-enabler
 PACKAGE="<%=myrepoUrl%>/<%=myappName%>"
 BINARY_NAME="<%=myappName%>"
 
