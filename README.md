@@ -39,7 +39,7 @@ Build your project and run it with `make run`.
 
 ![Alt text](/../pictures/pictures/go-generator2.png?raw=true "yo go make run")
 
-Start coding !
+Start your project !
 
 ## Contributing
 
@@ -47,6 +47,6 @@ If you would like to submit pull requests, please feel free to apply.
 
 ## Dependencies
 
-* Go ($GOROOT must be set)
-* Make
+* Golang
+* Make 
 * [Yo](https://github.com/yeoman/yo) (the scaffolding tool from Yeoman)
