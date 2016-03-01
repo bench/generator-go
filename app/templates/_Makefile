@@ -7,25 +7,25 @@ export GOPATH=$(shell pwd)
 default: help  
 
 # Clean .o files and binary
-clean:
+clean: ## Remove binary files
 	@echo "--> cleaning..."
 	@go clean || (echo "Unable to clean project" && exit 1)
 	@rm -rf bin/$(BINARY_NAME) 2> /dev/null
 	@echo "Clean OK"
 
 # Compile sources and build binary
-install: clean
+install: clean ## Compile sources and build binary
 	@echo "--> installing..."
 	@go install $(PACKAGE) || (echo "Compilation error" && exit 1)
 	@echo "Install OK"
 
 # Run your application
-run: clean install
+run: clean install ## Build application and run it
 	@echo "--> running application..."
 	@./bin/$(BINARY_NAME)
 
 # Test your application
-test:
+test: ## Run all tests of your app
 	@echo "--> testing..."
 	@go test -v $(PACKAGE)/...
 	
