@@ -20,10 +20,10 @@ Install Yeoman:
 
 
 Install Go generator
-
-    git clone https://github.com/BenC-/generator-go.git
-    cd generator-go
-    npm link
+    
+    sudo git clone https://github.com/BenC-/generator-go.git /usr/local/generator-go
+    cd /usr/local/generator-go
+    sudo npm link
 
 Run generator
 
