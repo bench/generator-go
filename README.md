@@ -29,17 +29,16 @@ Run generator
 
      yo go 
 
-![Alt text](/../pictures/pictures/go-generator.png?raw=true "yo go command")
 
-It will generate a standard golang project plus a makefile and a .gitignore file.
+This command will generate a minimalist directory hierarchy plus a makefile and a .gitignore file.
 
-![Alt text](/../pictures/pictures/go-generator1.png?raw=true "yo go tree result")
+Build your project and run it with 
 
-Build your project and run it with `make run`.
+```
+make run
+```
 
-![Alt text](/../pictures/pictures/go-generator2.png?raw=true "yo go make run")
-
-Start your project !
+Your application is running !
 
 ## Contributing
 
