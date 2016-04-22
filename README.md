@@ -27,18 +27,40 @@ Install Go generator
 
 Run generator
 
-     yo go 
+    mkdir myproject
+    cd myproject
+    yo go 
 
 
 This command will generate a minimalist directory hierarchy plus a makefile and a .gitignore file.
 
-Build your project and run it with 
+<pre>
+├── .gitignore            # ignores bin, pkg and other useless files
+├── README.md             # simple readme
+├── Makefile              # list available targets with 'make'
+├── bin                   # executable folder
+├── pkg                   # package object folder
+└── src
+    └── github.com
+        └── myapp
+            ├── hello
+            │   ├── hello.go       # simple test source
+            │   └── hello_test.go  # simple command source
+            └── main.go            # simple command source
+
+</pre>
+
+Build your project and make it run it with 
 
 ```
 make run
 ```
 
-Your application is running !
+Run unit tests with
+
+```
+make test
+```
 
 ## Contributing
 
