@@ -50,26 +50,26 @@ module.exports = yeoman.Base.extend({
 
   buildTreeFolderAndCopyFiles: function() {
     console.log('Generating tree folders');
-    var pkgDir = 'pkg/'
-    var srcDir = 'src/'+ this.myrepoUrl + "/" + this.myappName
-    var binDir = 'bin/'
+    var pkgDir = 'pkg/';
+    var srcDir = 'src/'+ this.myrepoUrl;
+    var binDir = 'bin/';
 
     this.mkdir(pkgDir);
     this.mkdir(srcDir);
     this.mkdir(binDir);
 
-    this.copy("_gitignore", ".gitignore");
-    this.copy("_hello.go", srcDir + "/hello/hello.go")
-    this.copy("_hello_test.go", srcDir + "/hello/hello_test.go")
+    this.copy("_gitignore", srcDir + ".gitignore");
+    this.copy("_hello.go", srcDir + "/hello/hello.go");
+    this.copy("_hello_test.go", srcDir + "/hello/hello_test.go");
 
-    var tmplContext = { 
+    var tmplContext = {
         myappName : this.myappName,
         myrepoUrl: this.myrepoUrl
     };
 
-    this.template("_main.go", srcDir + "/main.go", tmplContext)
-    this.template("_README.md", "README.md");
-    this.template("_Makefile", "Makefile", tmplContext)
+    this.template("_main.go", srcDir + "/main.go", tmplContext);
+    this.template("_README.md", srcDir + "README.md");
+    this.template("_Makefile", srcDir + "Makefile", tmplContext);
 
   }
 });
