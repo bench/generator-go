@@ -39,7 +39,7 @@ module.exports = yeoman.Base.extend({
       name: 'myrepoUrl',
       message: 'What is the URL repository of your application?',
       default: 'github.com'
-    }, ];
+    }];
 
     this.prompt(prompts, function(props) {
       this.myrepoUrl = props.myrepoUrl;
