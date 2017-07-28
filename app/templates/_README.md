@@ -1,3 +1,3 @@
-# <%= _.capitalize(appName) %>
+# <%= appName %>
 
-Once upon a time, blablabla...
+Golang app created with generator-go and yeoman.

@@ -1,11 +1,16 @@
 'use strict';
 
-var yeoman = require('yeoman-generator');
-//var terminalMenu = require('terminal-menu');
+const path = require('path');
+const Generator = require('yeoman-generator');
+const mkdir = require('mkdirp');
 
-module.exports = yeoman.Base.extend({
+module.exports = class extends Generator {
 
-  getmyappName: function() {
+  paths() {
+    this.destinationRoot(process.env.GOPATH || './');
+  }
+
+  prompting() {
 
     console.log('\n' +
       '+-----------------------------------------+\n' +
@@ -13,67 +18,71 @@ module.exports = yeoman.Base.extend({
       '+-----------------------------------------+\n' +
       '\n');
 
+    let cb = this.async();
 
-    var cb = this.async();
-
-    var prompts = [{
+    let prompts = [{
       type: 'input',
-      name: 'myappName',
+      name: 'appName',
       message: 'What is the name of your application?',
       default: 'myapp'
-    }, ];
-
-    this.prompt(prompts, function(props) {
-      this.myappName = props.myappName;
-      cb();
-    }.bind(this));
-
-  },
-
-  getRepoName: function() {
-
-    var cb = this.async();
-
-    var prompts = [{
+    }, {
       type: 'input',
       name: 'repoUrl',
       message: 'What is the URL repository of your application?',
-      default: 'github.com'
+      default: 'github.com/me/myapp',
     }];
 
-    this.prompt(prompts, function(props) {
+    return this.prompt(prompts).then(props => {
+      this.appName = props.appName;
       this.repoUrl = props.repoUrl;
-      cb();
-    }.bind(this));
+      cb()
+    });
 
-  },
+  }
 
-  buildTreeFolderAndCopyFiles: function() {
+  writing() {
     console.log('Generating tree folders');
-    var pkgDir = 'pkg/';
-    var srcDir = 'src/'+ this.repoUrl;
-    var binDir = 'bin/';
+    let pkgDir = this.destinationPath('pkg');
+    let srcDir = this.destinationPath(path.join('src/', this.repoUrl));
+    let binDir = this.destinationPath('bin');
 
-    this.mkdir(pkgDir);
-    this.mkdir(srcDir);
-    this.mkdir(binDir);
+    mkdir.sync(pkgDir);
+    mkdir.sync(srcDir);
+    mkdir.sync(binDir);
 
-    this.copy("_gitignore", srcDir + ".gitignore");
-    this.copy("_hello.go", srcDir + "/hello/hello.go");
-    this.copy("_hello_test.go", srcDir + "/hello/hello_test.go");
+    this.fs.copy(
+      this.templatePath('_gitignore'),
+      path.join(srcDir, '.gitignore')
+    );
+    this.fs.copy(
+      this.templatePath('_hello.go'),
+      path.join(srcDir, '/hello/hello.go')
+    );
+    this.fs.copy(
+      this.templatePath('_hello_test.go'),
+      path.join(srcDir, '/hello/hello_test.go')
+    );
 
-    var tmplContext = {
-        myappName : this.myappName,
+    let tmplContext = {
+        appName : this.appName,
         repoUrl: this.repoUrl
     };
 
-    this.template("_main.go", srcDir + "/main.go", tmplContext);
-    this.template("_README.md", srcDir + "README.md");
-    this.template("_Makefile", srcDir + "Makefile", tmplContext);
+    this.fs.copyTpl(
+      this.templatePath('_main.go'),
+      path.join(srcDir, 'main.go'),
+      tmplContext
+    );
+    this.fs.copyTpl(
+      this.templatePath('_README.md'),
+      path.join(srcDir, 'README.md'),
+      tmplContext
+    );
+    this.fs.copyTpl(
+      this.templatePath('_Makefile'),
+      path.join(srcDir, 'Makefile'),
+      tmplContext
+    );
 
   }
-});
-
-function reverseUrl(url) {
-  return url.split(".").reverse().join(".");
-}
+};
