@@ -2,8 +2,8 @@ package main
 
 import(
 "fmt"
-"<%=myrepoUrl%>/<%=myappName%>/hello"
-) 
+"<%=repoUrl%>/hello"
+)
 
 func main() {
 	fmt.Println(hello.BuildHello())

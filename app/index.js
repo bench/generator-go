@@ -36,13 +36,13 @@ module.exports = yeoman.Base.extend({
 
     var prompts = [{
       type: 'input',
-      name: 'myrepoUrl',
+      name: 'repoUrl',
       message: 'What is the URL repository of your application?',
       default: 'github.com'
     }];
 
     this.prompt(prompts, function(props) {
-      this.myrepoUrl = props.myrepoUrl;
+      this.repoUrl = props.repoUrl;
       cb();
     }.bind(this));
 
@@ -51,7 +51,7 @@ module.exports = yeoman.Base.extend({
   buildTreeFolderAndCopyFiles: function() {
     console.log('Generating tree folders');
     var pkgDir = 'pkg/';
-    var srcDir = 'src/'+ this.myrepoUrl;
+    var srcDir = 'src/'+ this.repoUrl;
     var binDir = 'bin/';
 
     this.mkdir(pkgDir);
@@ -64,7 +64,7 @@ module.exports = yeoman.Base.extend({
 
     var tmplContext = {
         myappName : this.myappName,
-        myrepoUrl: this.myrepoUrl
+        repoUrl: this.repoUrl
     };
 
     this.template("_main.go", srcDir + "/main.go", tmplContext);

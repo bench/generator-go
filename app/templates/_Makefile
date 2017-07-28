@@ -1,10 +1,10 @@
 # VARIABLES
-PACKAGE="<%=myrepoUrl%>/<%=myappName%>"
+PACKAGE="<%=repoUrl%>"
 BINARY_NAME="<%=myappName%>"
 
 export GOPATH=$(shell pwd)
 
-default: help  
+default: help
 
 # Clean .o files and binary
 clean: ## Remove binary files
@@ -28,7 +28,7 @@ run: clean install ## Build application and run it
 test: ## Run all tests of your app
 	@echo "--> testing..."
 	@go test -v $(PACKAGE)/...
-	
+
 # Help
 help:
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' 
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
