@@ -1,6 +1,6 @@
 # VARIABLES
 PACKAGE="<%=repoUrl%>"
-BINARY_NAME="<%=myappName%>"
+BINARY_NAME="<%=appName%>"
 
 export GOPATH=$(shell pwd)
 

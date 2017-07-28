@@ -1,3 +1,3 @@
-# <%= _.capitalize(myappName) %>
+# <%= _.capitalize(appName) %>
 
 Once upon a time, blablabla...
