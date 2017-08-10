@@ -19,13 +19,19 @@ The generator builds a standard directory hierarchy complying with thoses guidel
 ## Usage
 
 
-1. Install Yeoman
+1. Install yeoman
 
 ```
 $ npm install -g yo
 ```
 
-2. Run the generator
+2. Install the generator
+
+```
+$ npm install generator-go
+```
+
+3. Run the generator
 
 ```
 $ yo go
