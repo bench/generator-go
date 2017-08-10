@@ -1,7 +1,7 @@
 {
   "name": "generator-go",
   "version": "0.1.2",
-  "description": "Yeoman generator to scaffold a simple functionnal golang app",
+  "description": "A simple yeoman generator to scaffold a functionnal golang app",
   "files": [
     "app"
   ],
@@ -32,7 +32,7 @@
   }],
   "repository": {
     "type": "git",
-    "url": "https://github.com/BenC-/generator-go"
+    "url": "https://github.com/bench/generator-go"
   },
   "license": "MIT"
 }

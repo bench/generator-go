@@ -1,73 +1,96 @@
-# The Go generator
+<div style="text-align: center; margin-bottom: 20px">
+<img src="https://golang.org/doc/gopher/frontpage.png"/>
+</div>
 
-A [Yeoman](http://yeoman.io) generator for [Go](http://golang.org/).
+# The golang generator
+
+An simple [Yeoman](http://yeoman.io) generator for the [golang](http://golang.org/) programming language.
+
+### But what is golang ?
 
 See the [Golang documentation](https://golang.org/doc/) for more information.
 
-## Why Go generator ?
+### But why a golang generator ?
 
-The Go programming language is an open source project to make programmers more productive.
+The golang team defines [guidelines](https://blog.golang.org/organizing-go-code) to organize your code and structure your application.
 
-Golang team defines [guidelines](https://blog.golang.org/organizing-go-code) to organize your code and structure your application.
-
-The generator builds a standard directory hierarchy for your new golang project.
+The generator builds a standard directory hierarchy complying with thoses guidelines.
 
 ## Usage
 
-Install Yeoman:
 
-    npm install -g yo
+1. Install Yeoman
 
+```
+$ npm install -g yo
+```
 
-Install Go generator
-    
-    sudo git clone https://github.com/BenC-/generator-go.git /usr/local/generator-go
-    cd /usr/local/generator-go
-    sudo npm link
+2. Run the generator
 
-Run generator
+```
+$ yo go
+```
 
-    mkdir myproject
-    cd myproject
-    yo go 
+**That's all folks !**
 
 
-This command will generate a minimalist directory hierarchy plus a makefile and a .gitignore file.
+This will generate a minimalist directory hierarchy, a makefile and a .gitignore in your *$GOPATH* folder.
 
 <pre>
-├── .gitignore            # ignores bin, pkg and other useless files
-├── README.md             # simple readme
-├── Makefile              # list available targets with 'make'
-├── bin                   # executable folder
-├── pkg                   # package object folder
+$GOPATH folder
 └── src
     └── github.com
         └── myapp
             ├── hello
-            │   ├── hello.go       # simple test source
-            │   └── hello_test.go  # simple command source
-            └── main.go            # simple command source
-
+            │   ├── hello.go       # source file
+            │   └── hello_test.go  # test file
+            ├── main.go            # app entrypoint
+            ├── Makefile
+            ├── README.md
+            └── .gitignore
 </pre>
 
-Build your project and make it run it with 
+Once built, you can start your application with
 
 ```
 make run
 ```
 
-Run unit tests with
+and run unit tests suite with
 
 ```
 make test
 ```
 
-## Contributing
 
-If you would like to submit pull requests, please feel free to apply.
+## How to contribute
+
+
+1. Fork the projecton your *github* repository
+
+2. Clone your project locally
+
+    $ sudo git clone https://github.com/USERNAME/generator-go.git
+    $ cd generator-go
+
+3. Modify sources
+
+4. Symlink the package folder
+
+   $ sudo npm link
+
+5. Test your generator
+
+    $ yo go
+
+6. Create a PR !
+
+This project welcomes all contributors, feel free to apply !
 
 ## Dependencies
 
-* Golang
-* Make 
+This fabulous project depends on
+
+* [golang](http://golang.org/)
 * [Yo](https://github.com/yeoman/yo) (the scaffolding tool from Yeoman)
+* [GNU make](https://www.gnu.org/software/make/manual/make.html)
