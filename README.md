@@ -1,6 +1,6 @@
-<div style="text-align: center; margin-bottom: 20px">
+<p align="center" style="margin-bottom: 20px">
 <img src="https://golang.org/doc/gopher/frontpage.png"/>
-</div>
+</p>
 
 # The golang generator
 
