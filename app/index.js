@@ -29,7 +29,7 @@ module.exports = class extends Generator {
       type: 'input',
       name: 'repoUrl',
       message: 'What is the URL repository of your application?',
-      default: 'github.com/me/myapp',
+      default: 'github.com/me/myapp'
     }];
 
     return this.prompt(prompts).then(props => {
