@@ -1,21 +1,21 @@
 <a href="https://codeclimate.com/github/bench/generator-go/maintainability"><img src="https://api.codeclimate.com/v1/badges/b73387d211ce4f09286e/maintainability" /></a>
-<p align="center" style="margin-bottom: 20px">
+<p align="center" style="margin-bottom: 20px; width: 100px; margin: auto">
 <img src="https://golang.org/doc/gopher/frontpage.png"/>
 </p>
 
-# The golang generator
+# The golang code generator
 
-An simple [Yeoman](http://yeoman.io) generator for the [golang](http://golang.org/) programming language.
+A [Yeoman](http://yeoman.io) generator for the [golang](http://golang.org/) programming language.
 
-### But what is golang ?
+### What is golang ?
 
-See the [Golang documentation](https://golang.org/doc/) for more information.
+See the [Golang documentation](https://golang.org/doc/)
 
 ### But why a golang generator ?
 
-The golang team defines [guidelines](https://blog.golang.org/organizing-go-code) to organize your code and structure your application.
+The Golang team defined [guidelines](https://blog.golang.org/organizing-go-code) to organize code and structure an application.
 
-The generator builds a standard directory hierarchy complying with thoses guidelines.
+The generator builds a standard directory hierarchy complying with those guidelines.
 
 ## Usage
 
@@ -57,47 +57,73 @@ $GOPATH folder
             └── .gitignore
 </pre>
 
-Once built, you can start your application with
+Once built, go into application folder. You can then
+
+Run your application with
 
 ```
-make run
+$ make run
 ```
 
-and run unit tests suite with
+Compile sources and build binary with
 
 ```
-make test
+$ make install
+```
+
+Run all tests suite with
+
+```
+$ make test
+```
+
+And clean up with
+
+```
+$ make clean
 ```
 
 
 ## How to contribute
 
 
-1. Fork the projecton your *github* repository
+1. Fork the project
 
-2. Clone your project locally
+2. Clone your forked project locally
 
-    $ sudo git clone https://github.com/USERNAME/generator-go.git
-    $ cd generator-go
+```
+$ sudo git clone https://github.com/your_repo/generator-go.git
+$ cd generator-go
+```
 
 3. Modify sources
 
 4. Symlink the package folder
 
-   $ sudo npm link
+```
+$ sudo npm link
+```
 
 5. Test your generator
 
-    $ yo go
+```
+$ yo go
+```
 
-6. Create a PR !
+6. Submit a pull request
 
 This project welcomes all contributors, feel free to apply !
 
 ## Dependencies
 
-This fabulous project depends on
+This project depends on
 
 * [golang](http://golang.org/)
 * [Yo](https://github.com/yeoman/yo) (the scaffolding tool from Yeoman)
 * [GNU make](https://www.gnu.org/software/make/manual/make.html)
+
+
+
+<p align="center" style="margin-bottom: 20px; width: 100px; margin: auto">
+<img src="http://talks.golang.org/2014/go4gophers/gopherswim.jpg"/>
+</p>
