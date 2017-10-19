@@ -1,11 +1,11 @@
 {
-  "name": "generator-go",
-  "version": "0.1.3",
-  "description": "A simple yeoman generator to scaffold a functionnal golang app",
-  "files": [
+  "name":"generator-go",
+  "version":"0.1.4",
+  "description":"A yeoman generator to scaffold a simple functionnal golang app",
+  "files":[
     "app"
   ],
-  "keywords": [
+  "keywords":[
     "yeoman-generator",
     "scaffold",
     "golang",
@@ -13,26 +13,28 @@
     "boilerplate",
     "go"
   ],
-  "dependencies": {
-    "mkdirp": "^0.5.1",
-    "yeoman-generator": "^1.1.1"
+  "dependencies":{
+    "mkdirp":"^0.5.1",
+    "yeoman-generator":"^1.1.1"
   },
-  "engines": {
-    "node": ">=6.9.0"
+  "engines":{
+    "node":">=6.9.0"
   },
-  "author": {
-    "name": "Benjamin Chenebault",
-    "email": "contact@benjaminchenebault.net",
-    "url": "http://benjaminchenebault.net"
+  "author":{
+    "name":"Benjamin Chenebault",
+    "email":"contact@benjaminchenebault.net",
+    "url":"http://benjaminchenebault.net"
   },
-  "contributors": [{
-    "name": "Randy Lebeau",
-    "email": "randylebeau@gmail.com",
-    "url": "http://github.com/supremetechnopriest"
-  }],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/bench/generator-go"
+  "contributors":[
+    {
+      "name":"Randy Lebeau",
+      "email":"randylebeau@gmail.com",
+      "url":"http://github.com/supremetechnopriest"
+    }
+  ],
+  "repository":{
+    "type":"git",
+    "url":"https://github.com/bench/generator-go"
   },
-  "license": "MIT"
+  "license":"MIT"
 }

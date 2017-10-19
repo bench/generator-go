@@ -2,33 +2,26 @@
 PACKAGE="<%=repoUrl%>"
 BINARY_NAME="<%=appName%>"
 
-export GOPATH=$(shell pwd)
+default: usage
 
-default: help
-
-# Clean .o files and binary
-clean: ## Remove binary files
+clean: ## Trash binary files
 	@echo "--> cleaning..."
 	@go clean || (echo "Unable to clean project" && exit 1)
-	@rm -rf bin/$(BINARY_NAME) 2> /dev/null
+	@rm -rf $(GOPATH)/bin/$(BINARY_NAME) 2> /dev/null
 	@echo "Clean OK"
 
-# Compile sources and build binary
+test: ## Run all tests
+	@echo "--> testing..."
+	@go test -v $(PACKAGE)/...
+
 install: clean ## Compile sources and build binary
 	@echo "--> installing..."
 	@go install $(PACKAGE) || (echo "Compilation error" && exit 1)
 	@echo "Install OK"
 
-# Run your application
-run: clean install ## Build application and run it
+run: install ## Run your application
 	@echo "--> running application..."
-	@./bin/$(BINARY_NAME)
+	@$(GOPATH)/bin/$(BINARY_NAME)
 
-# Test your application
-test: ## Run all tests of your app
-	@echo "--> testing..."
-	@go test -v $(PACKAGE)/...
-
-# Help
-help:
+usage: ## List available targets
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
