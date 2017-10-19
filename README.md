@@ -1,17 +1,15 @@
-<a href="https://codeclimate.com/github/bench/generator-go/maintainability"><img src="https://api.codeclimate.com/v1/badges/b73387d211ce4f09286e/maintainability" /></a>
-<p align="center" style="margin-bottom: 20px; width: 100px; margin: auto">
-<img src="https://golang.org/doc/gopher/frontpage.png"/>
-</p>
+[![Code Climate](https://api.codeclimate.com/v1/badges/b73387d211ce4f09286e/maintainability)](https://codeclimate.com/github/bench/generator-go/maintainability)
+[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
-# The golang code generator
+
+# A golang code generator
 
 A [Yeoman](http://yeoman.io) generator for the [golang](http://golang.org/) programming language.
 
-### What is golang ?
 
 See the [Golang documentation](https://golang.org/doc/)
 
-### But why a golang generator ?
+### Why a golang generator ?
 
 The Golang team defined [guidelines](https://blog.golang.org/organizing-go-code) to organize code and structure an application.
 
@@ -40,8 +38,7 @@ $ yo go
 
 **That's all folks !**
 
-
-This will generate a minimalist directory hierarchy, a makefile and a .gitignore in your *$GOPATH* folder.
+This will generate a minimalist directory hierarchy, plus a `Makefile` and a `.gitignore` in your *$GOPATH* folder.
 
 <pre>
 $GOPATH folder
@@ -57,27 +54,27 @@ $GOPATH folder
             └── .gitignore
 </pre>
 
-Once built, go into application folder. You can then
+Once built, go into application folder. 
 
-Run your application with
+* Run your application with
 
 ```
 $ make run
 ```
 
-Compile sources and build binary with
+* Compile your sources and build a binary with
 
 ```
 $ make install
 ```
 
-Run all tests suite with
+* Run all unit tests with
 
 ```
 $ make test
 ```
 
-And clean up with
+* Clean up object files and binary with
 
 ```
 $ make clean
