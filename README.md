@@ -3,7 +3,7 @@
 <img src="https://golang.org/doc/gopher/frontpage.png"/>
 </p>
 
-# The golang code generator
+# A non-opinionated golang code generator
 
 A [Yeoman](http://yeoman.io) generator for the [golang](http://golang.org/) programming language.
 
@@ -11,7 +11,7 @@ A [Yeoman](http://yeoman.io) generator for the [golang](http://golang.org/) prog
 
 See the [Golang documentation](https://golang.org/doc/)
 
-### But why a golang generator ?
+### Why a generator ?
 
 The Golang team defined [guidelines](https://blog.golang.org/organizing-go-code) to organize code and structure an application.
 
