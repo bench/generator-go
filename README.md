@@ -92,7 +92,7 @@ $ make clean
 2. Clone your forked project locally
 
 ```
-$ sudo git clone https://github.com/your_repo/generator-go.git
+$ git clone https://github.com/your_repo/generator-go.git
 $ cd generator-go
 ```
 
