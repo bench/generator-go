@@ -2,7 +2,7 @@ package main
 
 import(
 "fmt"
-"<%=repoUrl%>/hello"
+"<%=moduleName%>/hello"
 )
 
 func main() {

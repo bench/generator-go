@@ -1,6 +1,6 @@
 {
   "name": "generator-go",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A yeoman generator to scaffold a simple functionnal golang app",
   "files": [
     "app"
@@ -14,7 +14,6 @@
     "go"
   ],
   "dependencies": {
-    "mkdirp": "^0.5.1",
     "yeoman-generator": "^3.2.0"
   },
   "engines": {
@@ -36,5 +35,10 @@
     "type": "git",
     "url": "https://github.com/bench/generator-go"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.35.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5"
+  }
 }
