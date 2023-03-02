@@ -1,89 +1,113 @@
-'use strict';
-
-const path = require('path');
+/* eslint-disable no-console */
 const Generator = require('yeoman-generator');
-const mkdir = require('mkdirp');
+
+const { spawnSync } = require('child_process');
+const { exit } = require('process');
 
 module.exports = class extends Generator {
-
-    paths() {
-        this.destinationRoot(process.env.GOPATH || './');
+  initializing() {
+    const child = spawnSync('go', ['version']);
+    if (child.error) {
+      console.log('Cannot run go command.\nIs the go binary available your path environment variable?');
+      exit(1);
     }
+  }
 
-    prompting() {
+  async prompting() {
+    console.log(
+      '\n'
+        + '+-----------------------------------+\n'
+        + '| g o | c o d e | g e n e r a t o r |\n'
+        + '+-----------------------------------+\n'
+        + '\n',
+    );
 
-        console.log('\n' +
-            '+-----------------------------------+\n' +
-            '| G o | c o d e | g e n e r a t o r |\n' +
-            '+-----------------------------------+\n' +
-            '\n');
+    const cb = this.async();
 
-        let cb = this.async();
+    const prompts = [
+      {
+        type: 'input',
+        name: 'moduleName',
+        message: 'What is your module name?',
+        default: 'github.com/user/hello',
+      },
+    ];
 
-        let prompts = [{
-            type: 'input',
-            name: 'appName',
-            message: 'What is the name of your application?',
-            default: 'myapp'
-        }, {
-            type: 'input',
-            name: 'repoUrl',
-            message: 'What is your URL repository ?',
-            default: 'github.com/me'
-        }];
+    await this.prompt(prompts).then((props) => {
+      this.moduleName = props.moduleName;
+      cb();
+    });
+  }
 
-        return this.prompt(prompts).then(props => {
-            this.appName = props.appName.replace(/\s+/g, '-').toLowerCase();
-            if (props.repoUrl.substr(-1) != '/') props.repoUrl += '/';
-            this.repoUrl = props.repoUrl + this.appName;
-            cb()
-        });
+  writing() {
+    console.log('\nGenerating tree folders');
 
+    this.fs.copy(
+      this.templatePath('_gitignore'),
+      this.destinationPath('.gitignore'),
+    );
+    this.fs.copy(
+      this.templatePath('_hello.go'),
+      this.destinationPath('hello/hello.go'),
+    );
+    this.fs.copy(
+      this.templatePath('_hello_test.go'),
+      this.destinationPath('hello/hello_test.go'),
+    );
+
+    const tmplContext = {
+      moduleName: this.moduleName,
+    };
+
+    this.fs.copyTpl(
+      this.templatePath('_main.go'),
+      this.destinationPath('main.go'),
+      tmplContext,
+    );
+    this.fs.copyTpl(
+      this.templatePath('_README.md'),
+      this.destinationPath('README.md'),
+      tmplContext,
+    );
+    this.fs.copyTpl(
+      this.templatePath('_Makefile'),
+      this.destinationPath('Makefile'),
+      tmplContext,
+    );
+  }
+
+  install() {
+    const child = spawnSync('go', ['mod', 'init', this.moduleName], {
+      cwd: process.cwd(),
+      env: process.env,
+      stdio: [process.stdin, process.stdout, process.stderr],
+      encoding: 'utf-8',
+    });
+    if (child.error) {
+      console.log(`Cannot run go mod init command: ${child.stdout}`);
+      exit(1);
     }
+  }
 
-    writing() {
-        console.log('Generating tree folders');
-        let pkgDir = this.destinationPath('pkg');
-        let srcDir = this.destinationPath(path.join('src/', this.repoUrl));
-        let binDir = this.destinationPath('bin');
+  end() {
+    console.log(
+      `
+To run your application:
+    make run
 
-        mkdir.sync(pkgDir);
-        mkdir.sync(srcDir);
-        mkdir.sync(binDir);
+To compile your sources and build binary
+    make install
 
-        this.fs.copy(
-            this.templatePath('_gitignore'),
-            path.join(srcDir, '.gitignore')
-        );
-        this.fs.copy(
-            this.templatePath('_hello.go'),
-            path.join(srcDir, '/hello/hello.go')
-        );
-        this.fs.copy(
-            this.templatePath('_hello_test.go'),
-            path.join(srcDir, '/hello/hello_test.go')
-        );
+To run all tests
+    make test`,
+    );
 
-        let tmplContext = {
-            appName: this.appName,
-            repoUrl: this.repoUrl
-        };
-
-        this.fs.copyTpl(
-            this.templatePath('_main.go'),
-            path.join(srcDir, 'main.go'),
-            tmplContext
-        );
-        this.fs.copyTpl(
-            this.templatePath('_README.md'),
-            path.join(srcDir, 'README.md'),
-            tmplContext
-        );
-        this.fs.copyTpl(
-            this.templatePath('_Makefile'),
-            path.join(srcDir, 'Makefile'),
-            tmplContext
-        );
-
-    }
+    console.log(
+      '\n'
+        + '+-------------------------+\n'
+        + '|  enjoy your go project  |\n'
+        + '+-------------------------+\n'
+        + '\n',
+    );
+  }
 };
