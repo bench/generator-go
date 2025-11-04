@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const Generator = require('yeoman-generator');
+const Generator = require('yeoman-generator').default;
 
 const { spawnSync } = require('child_process');
 const { exit } = require('process');
@@ -22,8 +22,6 @@ module.exports = class extends Generator {
         + '\n',
     );
 
-    const cb = this.async();
-
     const prompts = [
       {
         type: 'input',
@@ -33,10 +31,8 @@ module.exports = class extends Generator {
       },
     ];
 
-    await this.prompt(prompts).then((props) => {
-      this.moduleName = props.moduleName;
-      cb();
-    });
+    const answers = await this.prompt(prompts);
+    this.moduleName = answers.moduleName;
   }
 
   writing() {
