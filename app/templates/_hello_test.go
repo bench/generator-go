@@ -1,13 +1,13 @@
 package hello
 
 import (
-	"testing";
+	"testing"
 )
 
 func TestSayHello(t *testing.T) {
 	actual := BuildHello()
 	expected := "Hello, world."
-    if expected != actual {
-		t.Errorf("Error occured while testing sayhello: '%s' != '%s'", expected, actual);
-    }
+	if expected != actual {
+		t.Errorf("Error occurred while testing SayHello: '%s' != '%s'", expected, actual)
+	}
 }

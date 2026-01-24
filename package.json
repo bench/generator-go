@@ -13,11 +13,12 @@
     "boilerplate",
     "go"
   ],
+  "type": "module",
   "dependencies": {
-    "yeoman-generator": "^3.2.0"
+    "yeoman-generator": "^7.5.0"
   },
   "engines": {
-    "node": ">=6.9.0"
+    "node": ">=18.0.0"
   },
   "author": {
     "name": "Benjamin Chenebault",
@@ -37,8 +38,8 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^8.35.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.27.5"
+    "@eslint/js": "^9.39.2",
+    "eslint": "^9.39.2",
+    "globals": "^17.1.0"
   }
 }

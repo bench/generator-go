@@ -1,15 +1,13 @@
-/* eslint-disable no-console */
-const Generator = require('yeoman-generator');
+import Generator from 'yeoman-generator';
+import { spawnSync } from 'node:child_process';
+import process from 'node:process';
 
-const { spawnSync } = require('child_process');
-const { exit } = require('process');
-
-module.exports = class extends Generator {
+export default class extends Generator {
   initializing() {
     const child = spawnSync('go', ['version']);
     if (child.error) {
       console.log('Cannot run go command.\nIs the go binary available your path environment variable?');
-      exit(1);
+      process.exit(1);
     }
   }
 
@@ -22,8 +20,6 @@ module.exports = class extends Generator {
         + '\n',
     );
 
-    const cb = this.async();
-
     const prompts = [
       {
         type: 'input',
@@ -33,10 +29,8 @@ module.exports = class extends Generator {
       },
     ];
 
-    await this.prompt(prompts).then((props) => {
-      this.moduleName = props.moduleName;
-      cb();
-    });
+    const props = await this.prompt(prompts);
+    this.moduleName = props.moduleName;
   }
 
   writing() {
@@ -85,7 +79,7 @@ module.exports = class extends Generator {
     });
     if (child.error) {
       console.log(`Cannot run go mod init command: ${child.stdout}`);
-      exit(1);
+      process.exit(1);
     }
   }
 
@@ -110,4 +104,4 @@ To run all tests
         + '\n',
     );
   }
-};
+}

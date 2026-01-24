@@ -1,8 +1,9 @@
 package main
 
-import(
-"fmt"
-"<%=moduleName%>/hello"
+import (
+	"fmt"
+
+	"<%=moduleName%>/hello"
 )
 
 func main() {

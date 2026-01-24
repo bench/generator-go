@@ -1,20 +1,20 @@
 # VARIABLES
-PACKAGE="<%=moduleName%>"
+MODULE_NAME=<%=moduleName%>
 
 default: usage
 
 clean: ## Trash binary files
 	@echo "--> cleaning..."
-	@go clean || (echo "Unable to clean project" && exit 1)
+	@go clean
 	@echo "Clean OK"
 
 test: ## Run all tests
 	@echo "--> testing..."
-	@go test -v $(PACKAGE)/...
+	@go test -v ./...
 
 install: clean ## Compile sources and build binary
 	@echo "--> installing..."
-	@go install $(PACKAGE) || (echo "Compilation error" && exit 1)
+	@go install .
 	@echo "Install OK"
 
 run: install ## Run your application
