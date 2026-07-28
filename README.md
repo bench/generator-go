@@ -44,40 +44,35 @@ $ yo go
 This will generate a minimalist directory hierarchy, a makefile and a .gitignore in your *$GOPATH* folder.
 
 <pre>
-$GOPATH folder
-└── src
-    └── github.com
-        └── myapp
-            ├── hello
-            │   ├── hello.go       # source file
-            │   └── hello_test.go  # test file
-            ├── main.go            # app entrypoint
-            ├── Makefile
-            ├── README.md
-            └── .gitignore
+CURRENT FOLDER
+├── go.mod
+├── hello
+│   ├── hello.go       # source file
+│   └── hello_test.go  # test file
+├── main.go            # app entrypoint
+├── Makefile           # build targets
+└── README.md
 </pre>
 
-Once built, go into application folder. You can then
-
-Run your application with
+Once built, you can run your application
 
 ```
 $ make run
 ```
 
-Compile sources and build binary with
+Compile sources and build binary
 
 ```
 $ make install
 ```
 
-Run all tests suite with
+Run all tests
 
 ```
 $ make test
 ```
 
-And clean up with
+And clean up the binary
 
 ```
 $ make clean

@@ -1,8 +1,9 @@
 package main
 
-import(
-"fmt"
-"<%=repoUrl%>/hello"
+import (
+	"fmt"
+
+	"<%=moduleName%>/hello"
 )
 
 func main() {

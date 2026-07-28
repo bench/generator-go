@@ -1,9 +1,9 @@
 package hello
 
 func BuildHello() string {
-     return "Hello, world."
+	return "Hello, world."
 }
 
 func BuildHi() string {
-     return "Hi, world."
+	return "Hi, world."
 }
