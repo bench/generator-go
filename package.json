@@ -15,7 +15,7 @@
   ],
   "type": "module",
   "dependencies": {
-    "yeoman-generator": "^7.5.0"
+    "yeoman-generator": "^10.0.1"
   },
   "engines": {
     "node": ">=18.0.0"
